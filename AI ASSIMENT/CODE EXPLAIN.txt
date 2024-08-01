@@ -1,0 +1,50 @@
+1. Non-AI techniques
+
+This code snippet is for detecting and classifying objects (specifically screws and bolts) in images using OpenCV in a Google Colab environment. Here's a brief explanation:
+
+Mount Google Drive: This allows access to files stored on Google Drive.
+
+Imports: The code imports necessary libraries including OpenCV for image processing, NumPy for numerical operations, and functions for displaying images in Colab.
+
+Image Preprocessing:
+
+The preprocess_image function resizes images to a target size while maintaining the aspect ratio, converts them to grayscale, and applies Gaussian blur to reduce noise.
+Object Detection:
+
+The detect_objects function uses adaptive thresholding and morphological operations to detect contours in the preprocessed image. It then filters detected contours based on area and aspect ratio, identifying objects that fit the expected size and shape range.
+Processing Images from a Directory:
+
+The script reads images from a specified folder in Google Drive, preprocesses each image, detects objects, and draws bounding boxes around the detected objects. It also classifies objects into "screws" and "bolts" based on their aspect ratio.
+Display and Output:
+
+The results are displayed using cv2_imshow, showing the number of detected objects and an estimate of the number of screws and bolts.
+The code provides a basic framework for image processing and object detection in a Google Colab environment, which is useful for tasks like quality control or inventory management in a manufacturing context.
+
+
+
+
+
+
+
+2. AI techniques
+
+This code uses the YOLOv5 model for object detection on images stored in a Google Drive folder. Here's a brief explanation:
+
+Import Libraries: The necessary libraries such as torch, cv2, numpy, os, and cv2_imshow from Colab are imported.
+
+Load YOLOv5 Model: The YOLOv5 model is loaded from the Ultralytics repository using Torch Hub.
+
+Define process_image Function:
+
+The function reads an image from a given path.
+It runs the YOLOv5 model to detect objects.
+The results are filtered based on a confidence threshold.
+Non-Maximum Suppression (NMS) is applied to improve accuracy by removing overlapping bounding boxes based on IoU (Intersection over Union) threshold.
+The function draws bounding boxes around detected objects and counts them.
+The count is displayed on the image.
+Process Images from Folder:
+
+The code lists all image files in a specified folder.
+For each image, it calls process_image to detect objects and display the results using cv2_imshow.
+It also saves the processed images with bounding boxes in a new folder.
+The code is designed to work with Google Colab, leveraging its ability to integrate with Google Drive for storing and processing images.
